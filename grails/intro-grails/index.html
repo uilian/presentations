@@ -65,6 +65,66 @@
 					</aside>
 				</section>
 
+				<section>
+					<section>
+						<h2>Iniciando um projeto Grails</h2>
+					</section>
+                    <section>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+~ grails create-app MinhaApp
+                        </code></pre>
+                        <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+|- grails-app
+|--- assets          // Conteúdo gerenciado pelo Asset Plugin
+|--- conf            // Arquivos de configuração Grails, Hibernate, Spring
+|--- controllers
+|--- domain
+|--- i18n            // Internacionalização
+|--- services
+|--- taglib
+|--- utils
+|--- views           // Telas, templates
+|- src
+|--- groovy
+|--- java
+|- test              // Testes unitários
+|- web-app           // Imagens, CSS, JS, HTML ...
+                        </code></pre>
+                    </section>
+                </section>
+
+
+				<section id="sld_views">
+					<section>
+						<h2>Views</h2>
+					</section>
+                    <section>
+                        <ul>
+                            <li>GSP (HTML mesclado com taglibs próprias e/ou do framework)</li>
+                            <li>Conceito de templates</li>
+                            <li>Permite scripts em Groovy</li>
+                            <li>Taglibs são <a href="#/sld_sample_taglib">muito simples</a></li>
+                            <li>Scaffolding </li>
+                            <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+~ grails generate-views [domain-class-name]
+~ grails generate-all [domain-class-name]
+                            </code></pre>
+                        </ul>
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+some code;
+and another;
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="sld_sample_taglib">
+                    <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+                        exemplo de taglib
+                    </code></pre>
+                </section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
