@@ -42,32 +42,182 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
 				<section>
 					<h1>Grails</h1>
-                    <h3>Um framework Java que <strike>quase</strike> nunca te chuta nas "partes"</h3>
+                    <h3>Um framework Java que <strike><em>quase</em></strike> não te chuta nas "partes"</h3>
 					<p>
 						<small><a href="http://www.uilian.com">Uilian Souza</a> / <a href="http://twitter.com/uilian">@uilian</a></small>
 					</p>
-                    <aside class="notes">
-                       Testando as notas :)
-                    </aside>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
+					<h2>O que é</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+                        Framework Web MVC (RoR, CodeIgniter, Django, Play!)
+                    </p>
+                    <p>
+                        +
+                    </p>
+   					<p>
+                        Ambiente de desenvolvimento
+                    </p>
+				</section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+				<section>
+                    <section>
+                        <p>
+                            <a href="http://groovy.codehaus.org/">
+                                <img width="500" src="imgs/groovy_logo_big.png" alt="Groovy">
+                            </a>
+                        </p>
+                        <aside class="notes">Uma breve introdução ao Groovy</aside>
+                    </section>
+                    <section>
+                        <h3>Inspirada em linguagens como Python, Ruby e Smalltalk</h3>
+                    </section>
+                    <section>
+                        <h3>É uma linguagem:</h3>
+                        <ul>
+                            <li>Que roda sobre a JVM </li>
+                            <li>Extende as funcionalidades do Java </li>
+                            <li>Dinâmica (type-checking E metaprogramming)</li>
+                            <li>Permite checagem de tipos estática</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Integração de mão dupla com Java out-of-the-box</h3>
+                        <ul>
+                            <li>Permite o uso de bibliotecas e código Java</li>
+                            <li>Código Groovy compilam para bytecode Java</li>
+                        </ul>
+                        <p>
+                            <img width="128" src="imgs/groovydukemed.jpg" alt="Groovy">
+                        </p>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h3>Features</h3>
+                    </section>
+                    <section>
+                        <h2>Closures</h2>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+def quadrado = { println it**2 }
+quadrado(5)   // retorna 25
+
+def soma = { a, b -> println a+b }
+soma(4, 10)   // retorna 14
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Groovy Truth</h2>
+                        <p>
+                            Simples: tudo que não for nulo, vazio, zero
+                            (ou explicitamente <em>FALSE</em>, dã!),
+                            será avaliado para <em>TRUE</em>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Elvis Operator</h2>
+                        <p>Forma reduzida do operação ternário</p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+a ?: b
+
+equivalente à
+
+a != null ? a : b
+
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>GStrings</h2>
+                        <p>Múltiplas linhas</p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+ """
+Este é um
+texto muito
+longo
+"""
+                         </code></pre>
+                        <p>Interpolação de variáveis e expressões</p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+"1 + 1 = ${1+1}"
+                        </code></pre>
+                        <p>Expressões regulares</p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+"12345 world!".replaceAll(/\d+/, 'Hello')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Collections</h2>
+                        <p>Estruturas nativas para manipulação de coleções</p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+def list = [5, 6, 7, 8]
+
+def range = 5..8
+
+def map = [cidade:"Porto Alegre",
+           estado:"RS",
+           pais:"Brasil",
+           cep:90000001]
+map.get("cidade")    // "Porto Alegre"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Traits e Mixins</h2>
+                        <pre><code data-trim style="font-size: 20px; margin-top: 10px;">
+trait FlyingAbility { String fly() { "I'm flying!" } }
+
+trait WalkAbility { String walk() { "I'm walking!" } }
+
+class Thing implements FlyingAbility { }
+def a = new Thing()
+assert a.fly() == "I'm flying!"
+
+class Thing { }
+def b = new Thing() as FlyingAbility
+assert b.fly() == "I'm flying!"
+
+def c = new Thing()
+def d = c.withTraits FlyingAbility, WalkAbility
+d.fly(); d.walk()
+                        </code></pre>
+                        <p><em>@Mixins</em> estão <em>deprecated</em> a partir da versão 2.3, em favor dos Traits.</p>
+                    </section>
+                </section>
+
+	            <section>
+                    <section>
+    					<h2>Do Java ao Groovy</h2>
+                        <h3>Baby steps</h3>
+                        <p><img src="imgs/what-about-bob.png"></p>
+                        <p>
+                            <small>Código retirado de <a href="http://chrisdail.com/wp-content/uploads/2010/05/GroovyPrimer.pdf">chrisdail.com</a></small>
+                        </p>
+                    </section>
+
+                    <section><img src="imgs/step1.png"></section>
+                    <section><img src="imgs/step2.png"></section>
+                    <section><img src="imgs/step3.png"></section>
+                    <section><img src="imgs/step4.png"></section>
+                    <section><img src="imgs/step6.png"></section>
+                    <section><img src="imgs/step7.png"></section>
+                    <section><img src="imgs/step8.png"></section>
+                    <section><img src="imgs/step9.png"></section>
+                    <section><img src="imgs/step10.png"></section>
+                    <section><img src="imgs/step1.png"></section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Iniciando um projeto Grails</h2>
+						<h2>Como funciona</h2>
 					</section>
                     <section>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
@@ -358,7 +508,6 @@ function linkify( selector ) {
 							<li class="fragment"><em>of view</em></li>
 							<li class="fragment"><strong>fragments</strong></li>
 						</ol>
-
 						<aside class="notes">
 							This slide has fragments which are also stepped through in the notes window.
 						</aside>
