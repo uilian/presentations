@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
-		<!-- For syntax highlighting -->
+        <!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -37,9 +37,7 @@
 	</head>
 
 	<body>
-
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
@@ -199,7 +197,7 @@ d.fly(); d.walk()
                         <h3>Baby steps</h3>
                         <p><img src="imgs/what-about-bob.png"></p>
                         <p>
-                            <small>Código retirado de <a href="http://chrisdail.com/wp-content/uploads/2010/05/GroovyPrimer.pdf">chrisdail.com</a></small>
+                            <small>Fonte: <a href="http://chrisdail.com/wp-content/uploads/2010/05/GroovyPrimer.pdf">chrisdail.com</a></small>
                         </p>
                     </section>
 
@@ -217,16 +215,16 @@ d.fly(); d.walk()
 
 				<section>
 					<section>
-						<h2>Como funciona</h2>
-					</section>
-                    <section>
-                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+						<h2>Iniciando uma aplicação Grails</h2>
+                        <pre><code data-trim style="font-size: 28px; margin-top: 20px;">
 ~ grails create-app MinhaApp
                         </code></pre>
-                        <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 24px;">
 |- grails-app
 |--- assets          // Conteúdo gerenciado pelo Asset Plugin
-|--- conf            // Arquivos de configuração Grails, Hibernate, Spring
+|--- conf            // Arquivos de configuração
 |--- controllers
 |--- domain
 |--- i18n            // Internacionalização
@@ -247,18 +245,19 @@ d.fly(); d.walk()
 				<section id="sld_views">
 					<section>
 						<h2>Views</h2>
+                        <pre><code data-trim style="font-size: 28px; margin-top: 20px;">
+~ grails generate-views [domain-class-name]
+~ grails generate-all [domain-class-name]
+                        </code></pre>
 					</section>
                     <section>
+                        <h2>Views</h2>
                         <ul>
                             <li>GSP (HTML mesclado com taglibs próprias e/ou do framework)</li>
                             <li>Conceito de templates</li>
                             <li>Permite scripts em Groovy</li>
                             <li>Taglibs são <a href="#/sld_sample_taglib">muito simples</a></li>
                             <li>Scaffolding </li>
-                            <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
-~ grails generate-views [domain-class-name]
-~ grails generate-all [domain-class-name]
-                            </code></pre>
                         </ul>
                     </section>
                     <section>
@@ -274,38 +273,6 @@ and another;
                         exemplo de taglib
                     </code></pre>
                 </section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
 
 				<section>
 					<h2>Slides</h2>
@@ -551,18 +518,24 @@ function linkify( selector ) {
 					</p>
 				</section>
 
+
 				<section>
-					<h2>Stellar Links</h2>
+					<h2>Referências</h2>
 					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+                        <li><a href="http://grails.org/">Grails</li>
+                        <li><a href="http://mrhaki.blogspot.com.br/">Mr. Haki - Groovy and Grails Goodness</li>
+                        <li><a href="http://groovy-lang.org/">Groovy - Site oficial</a></li>
+                        <li><a href="http://groovy-lang.org/">Groovy - Site oficial</a></li>
+                        <li><a href="http://lmgtfy.com/?q=grails+groovy/">e muitas outras fontes online ...</a></li>
 					</ul>
 				</section>
 
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h2>Fim</h2>
+
+                    <h4 style="margin:30px;">Uilian Souza </h4>
+                    <p><small><a href="http://www.uilian.com/">uilian.com</a> / <a href="mailto:uilian@gmail.com">uilian@gmail.com</a> / <a href="http://twitter.com/uilian">@uilian</a></small></p>
+
 				</section>
 
 			</div>
