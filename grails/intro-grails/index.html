@@ -6,7 +6,7 @@
 
 		<title>Introdução ao Grails</title>
 
-		<meta name="description" content="Um framework Java para quem não tem tempo a perder.">
+		<meta name="description" content="Um framework Java para quem não tem tempo a perder">
 		<meta name="author" content="Uilian Souza">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,28 +38,33 @@
 
 	<body>
 		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-
 				<section>
 					<h1>Grails</h1>
-                    <h3>Um framework Java que <strike><em>quase</em></strike> não te chuta nas "partes"</h3>
+                    <h4>É um framework Java</h4>
+                    <h4 class="fragment roll-in">mas é limpinho :)</h4>
 					<p>
 						<small><a href="http://www.uilian.com">Uilian Souza</a> / <a href="http://twitter.com/uilian">@uilian</a></small>
 					</p>
+                    <aside class="notes">
+                        Sem pessimismo, porque se tiver que usar um
+                        framework, eu sugiro que use o Grails.
+                        Ele praticamente fica fora do seu caminho o tempo todo, e está lá
+                        (quase sempre) para ajudar quando necessário. Como todo bom prestador
+                        de serviços deveria ser.
+                    </aside>
 				</section>
 
 				<section>
 					<h2>O que é</h2>
-					<p>
-                        Framework Web MVC (RoR, CodeIgniter, Django, Play!)
-                    </p>
-                    <p>
-                        +
-                    </p>
-   					<p>
-                        Ambiente de desenvolvimento
-                    </p>
+                    <p class="fragment roll-in grow">Framework Web MVC (RoR, CodeIgniter, Django, Play!)</p>
+                    <p class="fragment roll-in grow">Convention-Over-Configuration</p>
+                    <p class="fragment roll-in grow">Full-Stack</p>
+                    <aside class="notes">
+                        Estes são os pontos que para mim melhor definem e diferenciam o Grails
+                        para mim, vamos voltar neste pontos adiante. Mas antes, precisamos falar
+                        um pouco sobre o Groovy.
+                    </aside>
 				</section>
 
 				<section>
@@ -69,59 +74,97 @@
                                 <img width="500" src="imgs/groovy_logo_big.png" alt="Groovy">
                             </a>
                         </p>
-                        <aside class="notes">Uma breve introdução ao Groovy</aside>
-                    </section>
-                    <section>
-                        <h3>Inspirada em linguagens como Python, Ruby e Smalltalk</h3>
+                        <aside class="notes">
+                            Será uma breve introdução às features mais
+                            interessantes do Groovy, com foco naquelas que
+                            aparecem mais frequentemente no uso do Grails.
+                        </aside>
                     </section>
                     <section>
                         <h3>É uma linguagem:</h3>
                         <ul>
-                            <li>Que roda sobre a JVM </li>
-                            <li>Extende as funcionalidades do Java </li>
-                            <li>Dinâmica (type-checking E metaprogramming)</li>
-                            <li>Permite checagem de tipos estática</li>
+                            <li class="fragment grow">Inspirada em linguagens como Python, Ruby e Smalltalk</li>
+                            <li class="fragment grow">Que roda sobre a JVM</li>
+                            <li class="fragment grow">Extende as funcionalidades do Java</li>
+                            <li class="fragment grow">Dinâmica (type-checking E metaprogramming)</li>
+                            <li class="fragment grow">Permite checagem de tipos estática</li>
                         </ul>
+                        <aside class="notes">
+                            Todas estas características tem seu lado bom e seu lado ruim.
+                            Como tudo na vida.
+                            Groovy tem evoluído para tentar equilibrar flexibilidade,
+                            produtividade e performance.
+                        </aside>
                     </section>
                     <section>
                         <h3>Integração de mão dupla com Java out-of-the-box</h3>
-                        <ul>
-                            <li>Permite o uso de bibliotecas e código Java</li>
-                            <li>Código Groovy compilam para bytecode Java</li>
-                        </ul>
-                        <p>
-                            <img width="128" src="imgs/groovydukemed.jpg" alt="Groovy">
-                        </p>
+
+                        <p class="fragment" data-fragment-index="1">Permite o uso de bibliotecas e código Java</p>
+                        <div class="fragment" data-fragment-index="3">
+                            <img width="256" src="imgs/groovydukemed.jpg" alt="Groovy" />
+                        </div>
+                        <p class="fragment" data-fragment-index="2">Código fonte Groovy compila para bytecode Java</p>
+
+                        <aside class="notes">
+                            O ponto aqui é ressaltar que muita coisa já existe pronta em Java,
+                            e pode ser utilizada sem modificações em Groovy.
+                            Além disso, artefatos construídos com Groovy também podem ser utilizados
+                            em outros programas Java.
+                            Ex: Pentaho (PDI, PRD).
+                        </aside>
                     </section>
 				</section>
 
                 <section>
                     <section>
                         <h3>Features</h3>
+                        <aside class="notes">
+                            Vamos às features, finalmente :)
+                            Disclaimer: elas foram escolhidas e estão organizadas de acordo
+                            com o uso que EU fiz até o momento do Groovy, provavelmente
+                            outras pessoas fariam uma lista diferente.
+                        </aside>
                     </section>
+
                     <section>
                         <h2>Closures</h2>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
-def quadrado = { println it**2 }
-quadrado(5)   // retorna 25
+def quadrado = {it**2}     // parâmetro implícito
+println quadrado(5)        // retorna 25
 
-def soma = { a, b -> println a+b }
-soma(4, 10)   // retorna 14
+def soma = { a, b -> a+b }
+println soma(4, 10)        // retorna 14
                         </code></pre>
+                        <aside class="notes">
+                            - A definição informal de closure: um bloco anônimo de código
+                            delimitado por chaves, que ao contrário de um método, não precisa
+                            estar em uma classe nem de uma declaração de método.
+                            - Tem acesso ao estado do escopo onde ele é executado.
+                            - Encapsulamento, expressividade / legibilidade.
+
+                        </aside>
                     </section>
 
                     <section>
                         <h2>Groovy Truth</h2>
                         <p>
-                            Simples: tudo que não for nulo, vazio, zero
-                            (ou explicitamente <em>FALSE</em>, dã!),
+                            Regra: tudo que não for nulo, vazio, zero
+                            (ou explicitamente <em>FALSE</em>, óbvio),
                             será avaliado para <em>TRUE</em>
                         </p>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+// True                      | // False
+def a = true                 | def b = false
+def numbers_full = [1,2,3]   | def numbers = []
+def s = 'abc'                | def s = ''
+def n = 1                    | def n = 0
+def obj = new Object()       | def obj = null
+                        </code></pre>
                     </section>
 
                     <section>
                         <h2>Elvis Operator</h2>
-                        <p>Forma reduzida do operação ternário</p>
+                        <p>Forma reduzida do operador ternário</p>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
 a ?: b
 
@@ -130,32 +173,40 @@ equivalente à
 a != null ? a : b
 
                         </code></pre>
+                        <aside class="notes">
+                            Merece ser citado porque Elvis é o rei :)
+                        </aside>
                     </section>
 
                     <section>
                         <h2>GStrings</h2>
-                        <p>Múltiplas linhas</p>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
- """
+
+// Múltiplas linhas
+"""
 Este é um
 texto muito
 longo
 """
-                         </code></pre>
-                        <p>Interpolação de variáveis e expressões</p>
-                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+
+
+// Interpolação de variáveis e expressões
 "1 + 1 = ${1+1}"
-                        </code></pre>
-                        <p>Expressões regulares</p>
-                        <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+
+
+// Expressões regulares
 "12345 world!".replaceAll(/\d+/, 'Hello')
                         </code></pre>
+                        <aside class="notes">
+                            Groovy adiciona muitos métodos utilitários às Strings Java.
+                        </aside>
                     </section>
 
                     <section>
                         <h2>Collections</h2>
-                        <p>Estruturas nativas para manipulação de coleções</p>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
+// Estruturas nativas para manipulação de coleções
+
 def list = [5, 6, 7, 8]
 
 def range = 5..8
@@ -165,6 +216,7 @@ def map = [cidade:"Porto Alegre",
            pais:"Brasil",
            cep:90000001]
 map.get("cidade")    // "Porto Alegre"
+
                         </code></pre>
                     </section>
 
@@ -188,6 +240,11 @@ def d = c.withTraits FlyingAbility, WalkAbility
 d.fly(); d.walk()
                         </code></pre>
                         <p><em>@Mixins</em> estão <em>deprecated</em> a partir da versão 2.3, em favor dos Traits.</p>
+                        <aside class="notes">
+                            O básico para ser compreendido aqui é que é possível extender
+                            as funcionalidades de objetos Groovy através de composição em
+                            tempo de execução. Cool!
+                        </aside>
                     </section>
                 </section>
 
@@ -201,27 +258,47 @@ d.fly(); d.walk()
                         </p>
                     </section>
 
-                    <section><img src="imgs/step1.png"></section>
-                    <section><img src="imgs/step2.png"></section>
-                    <section><img src="imgs/step3.png"></section>
-                    <section><img src="imgs/step4.png"></section>
-                    <section><img src="imgs/step6.png"></section>
-                    <section><img src="imgs/step7.png"></section>
-                    <section><img src="imgs/step8.png"></section>
-                    <section><img src="imgs/step9.png"></section>
-                    <section><img src="imgs/step10.png"></section>
-                    <section><img src="imgs/step1.png"></section>
+                    <section><img src="imgs/step1.png"/></section>
+                    <section><img src="imgs/step2.png"/></section>
+                    <section><img src="imgs/step3.png"/></section>
+                    <section><img src="imgs/step4.png"/></section>
+                    <section><img src="imgs/step6.png"/></section>
+                    <section><img src="imgs/step7.png"/></section>
+                    <section><img src="imgs/step8.png"/></section>
+                    <section><img src="imgs/step9.png"/></section>
+                    <section><img src="imgs/step10.png"/></section>
+                    <section><img src="imgs/step1.png"/></section>
 				</section>
+
+                <section>
+                    <h2>Grails</h2>
+                    <section>
+                        <img src="imgs/grails_full_stack.jpg" width="700px"/>
+                        <aside class="notes">
+Database management (ORM)
+Presentation Layer (User Interface)
+Service Layer
+Configuration
+						</aside>
+                    </section>
+                </section>
 
 				<section>
 					<section>
-						<h2>Iniciando uma aplicação Grails</h2>
+						<h2>Criando uma aplicação Grails</h2>
                         <pre><code data-trim style="font-size: 28px; margin-top: 20px;">
+// Cria a aplicação
 ~ grails create-app MinhaApp
+                        </code></pre>
+                        <pre class="fragment"><code data-trim style="font-size: 28px; margin-top: 20px;">
+// Executa a aplicação
+ ~ cd MinhaApp
+ ~ grails run-app MinhaApp
                         </code></pre>
                     </section>
                     <section>
                         <pre><code data-trim style="font-size: 24px;">
+//// Convention-over-configuration
 |- grails-app
 |--- assets          // Conteúdo gerenciado pelo Asset Plugin
 |--- conf            // Arquivos de configuração
@@ -241,15 +318,7 @@ d.fly(); d.walk()
                     </section>
                 </section>
 
-
 				<section id="sld_views">
-					<section>
-						<h2>Views</h2>
-                        <pre><code data-trim style="font-size: 28px; margin-top: 20px;">
-~ grails generate-views [domain-class-name]
-~ grails generate-all [domain-class-name]
-                        </code></pre>
-					</section>
                     <section>
                         <h2>Views</h2>
                         <ul>
@@ -260,94 +329,57 @@ d.fly(); d.walk()
                             <li>Scaffolding </li>
                         </ul>
                     </section>
+
                     <section>
-                        <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-some code;
-and another;
-                        </code></pre>
+                        <img src="imgs/gsp-sample.png" width="100%"/>
                     </section>
+
+					<section>
+						<h2>Scaffolding</h2>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+// Scaffolding dinâmico, gera as GUIs para CRUD
+// em tempo de execução:
+//    index, show, edit, delete, create, save, update
+
+class BookController {       | class AnotherController {
+    static scaffold = true   |     static scaffold = Book
+}                            | }
+
+// Scaffolding estático: cria fisicamente os arquivos das
+// interfaces CRUD, de acordo com o template padrão
+~ grails generate-views [domain-class-name]
+~ grails generate-all [domain-class-name]
+
+// Customizar os templates:
+~ grails install-templates
+                        </code></pre>
+                        <aside class="notes">
+                            O scaffolding era uma operação padrão do framework até a versão
+                            2.3, quando passou a ser disponibilizada como um plugin.
+                            Existem plugins para customizar o comportamento e a aparência
+                            da interface, como o Twitter Bootstrap, Fields (para os campos).
+                        </aside>
+					</section>
                 </section>
 
                 <section id="sld_sample_taglib">
-                    <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-                        exemplo de taglib
+                    <img src="imgs/taglib-sample.png" width="100%"/>
+                    <pre class="fragment"><code data-trim style="font-size: 24px; margin-top: 10px;">
+// Exemplo de uso:
+<bootstrap:alert class="alert-info">
+    ${flash.message}
+</bootstrap:alert>
                     </code></pre>
                 </section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                <!--  CORTE  -------------------------------------->
+                <!--  CORTE  -------------------------------------->
+                <!--  CORTE  -------------------------------------->
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
 
 				<section id="themes">
 					<h2>Themes</h2>
@@ -369,60 +401,6 @@ and another;
 					</p>
 				</section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
 
 				<section>
 					<h2>Clever Quotes</h2>
@@ -439,20 +417,7 @@ Reveal.addEventListener( 'customevent', function() {
 				<section>
 					<h2>Pretty Code</h2>
 					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
 
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
