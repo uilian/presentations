@@ -56,14 +56,23 @@
 				</section>
 
 				<section>
-					<h2>O que é</h2>
-                    <p class="fragment roll-in grow">Framework Web MVC (RoR, CodeIgniter, Django, Play!)</p>
-                    <p class="fragment roll-in grow">Convention-Over-Configuration</p>
-                    <p class="fragment roll-in grow">Full-Stack</p>
+                    <section>
+                        <h2>O que vem na caixa</h2>
+                        <p>Framework Web MVC (RoR, CodeIgniter, Django, Play!)</p>
+                        <p>Convention-Over-Configuration</p>
+                        <p>Full-Stack</p>
+                    </section>
+                    <section>
+                        <h2>Pontos fortes</h2>
+                        <p>O ciclo de desenvolvimento é rápido</p>
+                        <p>Grande variedade de plugins disponíveis</p>
+                        <p>Aplicar alterações em configurações e fontes não depende de reiniciar o servidor</p>
+                        <p>Excelente documentação (e muitos livros)</p>
+                    </section>
                     <aside class="notes">
-                        Estes são os pontos que para mim melhor definem e diferenciam o Grails
-                        para mim, vamos voltar neste pontos adiante. Mas antes, precisamos falar
-                        um pouco sobre o Groovy.
+                        Estes são os pontos que melhor definem e diferenciam o Grails
+                        para mim, vamos voltar neste pontos adiante. Mas antes, precisamos
+                        falar um pouco sobre o Groovy.
                     </aside>
 				</section>
 
@@ -71,7 +80,7 @@
                     <section>
                         <p>
                             <a href="http://groovy.codehaus.org/">
-                                <img width="500" src="imgs/groovy_logo_big.png" alt="Groovy">
+                                <img class="stretch" src="imgs/groovy_logo_big.png" alt="Groovy" style="border:0px;">
                             </a>
                         </p>
                         <aside class="notes">
@@ -83,11 +92,11 @@
                     <section>
                         <h3>É uma linguagem:</h3>
                         <ul>
-                            <li class="fragment grow">Inspirada em linguagens como Python, Ruby e Smalltalk</li>
-                            <li class="fragment grow">Que roda sobre a JVM</li>
-                            <li class="fragment grow">Extende as funcionalidades do Java</li>
-                            <li class="fragment grow">Dinâmica (type-checking E metaprogramming)</li>
-                            <li class="fragment grow">Permite checagem de tipos estática</li>
+                            <li>Inspirada em linguagens como Python, Ruby e Smalltalk</li>
+                            <li>Que roda sobre a JVM</li>
+                            <li>Extende as funcionalidades do Java</li>
+                            <li>Dinâmica (type-checking E metaprogramming)</li>
+                            <li>Permite checagem de tipos estática</li>
                         </ul>
                         <aside class="notes">
                             Todas estas características tem seu lado bom e seu lado ruim.
@@ -96,7 +105,7 @@
                             produtividade e performance.
                         </aside>
                     </section>
-                    <section>
+                    <section id="sld_resp">
                         <h3>Integração de mão dupla com Java out-of-the-box</h3>
 
                         <p class="fragment" data-fragment-index="1">Permite o uso de bibliotecas e código Java</p>
@@ -141,7 +150,6 @@ println soma(4, 10)        // retorna 14
                             estar em uma classe nem de uma declaração de método.
                             - Tem acesso ao estado do escopo onde ele é executado.
                             - Encapsulamento, expressividade / legibilidade.
-
                         </aside>
                     </section>
 
@@ -250,9 +258,8 @@ d.fly(); d.walk()
 
 	            <section>
                     <section>
-    					<h2>Do Java ao Groovy</h2>
-                        <h3>Baby steps</h3>
-                        <p><img src="imgs/what-about-bob.png"></p>
+    					<h2>Baby steps - do Java ao Groovy</h2>
+                        <p><img src="imgs/what-about-bob.png" width="300px"></p>
                         <p>
                             <small>Fonte: <a href="http://chrisdail.com/wp-content/uploads/2010/05/GroovyPrimer.pdf">chrisdail.com</a></small>
                         </p>
@@ -268,17 +275,25 @@ d.fly(); d.walk()
                     <section><img src="imgs/step9.png"/></section>
                     <section><img src="imgs/step10.png"/></section>
                     <section><img src="imgs/step1.png"/></section>
+                    <aside class="notes">
+                        Este exemplo demonstra claramente a diferença
+                        entre as sintaxes das duas linguagens. Alguns
+                        ficariam tentados a exultar pura e simplesmente
+                        o triunfo conciso do Groovy sobre o Java, mas
+                        é melhor utilizar este espaço para apontar os
+                        pontos fracos desta abordagem.
+                    </aside>
 				</section>
 
                 <section>
                     <h2>Grails</h2>
                     <section>
-                        <img src="imgs/grails_full_stack.jpg" width="700px"/>
+                        <img src="imgs/grails_full_stack.jpg" class="stretch"/>
                         <aside class="notes">
-Database management (ORM)
-Presentation Layer (User Interface)
-Service Layer
-Configuration
+                            Database management (GORM)
+                            Presentation Layer (User Interface)
+                            Service Layer
+                            Configuration
 						</aside>
                     </section>
                 </section>
@@ -332,6 +347,17 @@ Configuration
 
                     <section>
                         <img src="imgs/gsp-sample.png" width="100%"/>
+                        <aside class="notes">
+                            O código das views é relativamente limpo, e é uma boa prática (IMO) utilizar
+                            o mínimo possível das "facilidades" do framework nesta parte de
+                            interface, principalmente plugins. Deixando claro que os frameworks em
+                            geral não são "O PROBLEMA". O problema são os programadores que
+                            os utilizam como muletas para compensar suas próprias deficiências.
+
+                            Ex: Não use uma taglib de ajax porque não sabe javascript, APRENDA javascript.
+                                Não use ORM porque não sabe SQL, use porque entende as vantagens.
+
+                        </aside>
                     </section>
 
 					<section>
@@ -356,155 +382,212 @@ class BookController {       | class AnotherController {
                         <aside class="notes">
                             O scaffolding era uma operação padrão do framework até a versão
                             2.3, quando passou a ser disponibilizada como um plugin.
-                            Existem plugins para customizar o comportamento e a aparência
+                            Existem outros plugins para customizar o comportamento e a aparência
                             da interface, como o Twitter Bootstrap, Fields (para os campos).
                         </aside>
 					</section>
-                </section>
 
-                <section id="sld_sample_taglib">
-                    <img src="imgs/taglib-sample.png" width="100%"/>
-                    <pre class="fragment"><code data-trim style="font-size: 24px; margin-top: 10px;">
+                    <section id="sld_sample_taglib">
+                        <img src="imgs/taglib-sample.png" width="100%"/>
+                        <pre class="fragment"><code data-trim style="font-size: 24px; margin-top: 10px;">
 // Exemplo de uso:
 <bootstrap:alert class="alert-info">
-    ${flash.message}
+${flash.message}
 </bootstrap:alert>
-                    </code></pre>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Assets pipeline *</h3>
+                        <ul>
+                            <li>Otimização e organização do uso de recursos estáticos nas páginas.</li>
+                            <li>Atualização on-the-fly, alterações são disponibilizadas sem reload.</li>
+                            <li>Redução do tamanho das depenências, através da compressão, minificação e cache (UglifyJS).</li>
+                            <li>Dependências e ordem de carga são configuráveis diretamente nos CSS e JS.</li>
+                            <li>Suporte à compilação de recursos estáticos LESS, SASS/SCSS, Handlebars, Ember, CoffeScript.</li>
+                        </ul>
+                        <p><small>* na versão 2.4 substituiu o plugin Resources</small></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Controllers</h3>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+// Gera um controller para CRUD (template pré-definido)
+~ grails generate-controller [domain-class-name]
+
+// Ou pode ser criado diretamente
+package org.sample
+class SampleController {
+    def world() {
+        render "Hello World!"
+    }
+}
+
+// Por convenção, o mapeamento para as
+// seguintes URL e view será:
+
+Requisição -> [grails-app]/sample/world
+Retorno    -> [grails-app]/views/sample/world.gsp
+
+                        </code></pre>
+                        <aside class="notes">
+                            - defaultAction (único método, index(), ou declarado explicitamente)
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Escopos</h3>
+                        <ul>
+                            <li>servletContext -> compartilha entre toda a aplicação</li>
+                            <li>session -> apenas na sessão do usuário</li>
+                            <li>request -> objetos referentes à requisição corrente</li>
+                            <li>params -> mapa contendo os parâmetros passados no request</li>
+                            <li>flash -> temporário, mantém o conteúdo apenas até o próximo request</li>
+                        </ul>
+                        <pre class="fragment"><code data-trim style="font-size: 24px; margin-top: 10px;">
+class SomeController {
+    def find() {
+        def findBy = params["findBy"]
+        def appContext = request["foo"]
+        def loggedUser = session["logged_user"]
+    }
+}
+                        </code></pre>
+                        <aside class="notes">
+                            Nada demais aqui, parecido com os demais frameworks, legal mostrar
+                            a sintaxe, que é mais limpa e direta no Grails.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>UrlMappings</h3>
+                        <ul>
+                            <li>A convenção é <code>/controller/action/id</code></li>
+                            <li>Pode ser alterada em <code>[grails-app]/conf/UrlMappings.groovy</code></li>
+                            <li>Permite agrupar ações que compartilham caminhos</li>
+                            <li>É possível redirecionar para URI</li>
+                            <li>Mapeamento REST para controllers por convenção (<em> a partir da 2.3</em>)</li>
+                        </ul>
+
+                    </section>
                 </section>
 
 
-
-
-
                 <!--  CORTE  -------------------------------------->
                 <!--  CORTE  -------------------------------------->
                 <!--  CORTE  -------------------------------------->
 
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
+                    <section>
+                        <blockquote>
+                            "The world ain't all sunshine and rainbows.
+                            It's a very mean and nasty place... and I
+                            don´t care how tough you are, it will beat
+                            you to your knees and keep you there
+                            permanently, if you let it"
+                        </blockquote>
+                        <b>Rocky Balboa</b>
+                    </section>
+                    <section>
+                        <h3>Ou seja, o difícil não é fácil</h3>
+                        <ul>
+                            <li>Atualizar a versão do framework pode ser uma dor de cabeça.</li>
+                            <li>O framework decide muita coisa por você.</li>
+                            <li>IDEs às vezes mais atrapalham que ajudam.</li>
+                            <li>Dilema do Homem-Aranha.</li>
+                            <li>Grails ainda é focado apenas em servlet containers.<em>(suporte ao Netty está previsto na v3.0)</em></li>
+                            <li>É <strike>obrigatório</strike> <em>extremamente indicado</em> aprender Groovy, GORM, Gradle e GVM.</li>
+                        </ul>
+                        <aside class="notes">
+                            1- É especialmente verdadeiro quando se utilizam muitos plugins.
+                            As atualizações do framework não mantém compatibilidade com versões anteriores.
+                        </br>
+                            2- O que é bom e ruim ao mesmo tempo. Se bem utilizado, Grails pode
+                            dar um ganho de produtividade considerável. Mas confiança cega,
+                            super-utilização, e a falta de conhecimento vão gerando débito técnico
+                            pelo caminho, como qualquer outro framework.
+                        </br>
+                            3- As IDEs que oferecem bom suporte à Groovy e Grails são Intellij IDEA e GGTS.
+                            Mas eu aconselho utilizar apenas quando realmente for necessário, principalmente
+                            enquanto estiver aprendendo a linguagem. Principalmente o GGTS, que é baseado em
+                            Eclipse, gera muito lixo por baixo dos panos, que é necessário para seu funcionamento,
+                            e nada tem a ver com Grails. IDEA só tem suporte ao Grails na versão paga.
+                        </br>
+                            4- Com grandes poderes vem grandes responsabilidades. O uso indiscriminado de "def"
+                            outras estruturas "groovyanas" podem gerar código obscuro e díficil de manter.
+                        </br>
+                            5- Na prática, isso significa que para programadores que tenham escalabilidade como
+                            pré-requisito talvez devessem considerar outras opções antes do Grails.
+                        </br>
+                            6- Existe um ecosistema todo relacionado ao Grails, e para tirar vantagem real desta plataforma,
+                            é melhor investir tempo para aprender todas as ferramentas.
+                        </aside>
+                    </section>
 				</section>
 
 				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
+                    <section>
+                        <h2>Referências</h2>
+                        <ul>
+                            <li><a href="http://grails.org/">Grails</li>
+                            <li><a href="http://mrhaki.blogspot.com.br/">Mr. Haki - Groovy and Grails Goodness</li>
+                            <li><a href="http://groovy-lang.org/">Groovy - Site oficial</a></li>
+                            <li><a href="http://lmgtfy.com/?q=grails+groovy/">e muitas outras fontes online ...</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <strong><a href="http://grails.org/Books">grails.org/Books</a></strong>
+                        <div>
+                            <img width="128px" src="imgs/capas/cat.gif">
+                            <img width="128px" src="imgs/capas/A9781430243779-3d_4.png">
+                            <img width="128px" src="imgs/capas/41v04TxSfDL._AA160_.jpg">
+                            <img width="128px" src="imgs/capas/gsmith_cover150.jpg">
+                            <img width="128px" src="imgs/capas/a1fde03ae7a0702bcf61e110.L._SY300_.jpg">
+                            <img width="128px" src="imgs/capas/LandingPageCover.png">
+                            <img width="128px" src="imgs/capas/A9781430248064-3d_5.png">
+                            <img width="128px" src="imgs/capas/A9781430219262-3d_12.png">
+                            <img width="128px" src="imgs/capas/koenig_cover150.jpg">
+                            <img width="128px" src="imgs/capas/sdgrvr.jpg">
+                            <img width="128px" src="imgs/capas/51WDkg%2BZhXL._AA160_.jpg">
+                            <img width="128px" src="imgs/capas/51j3SzJmJ6L._SL150_.jpg">
+                            <img width="128px" src="imgs/capas/koenig2_cover150.jpg">
+                            <img width="128px" src="imgs/capas/gsmith2_cover150.jpg">
+                        </div>
+                    </section>
 				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-
-				<section>
-					<h2>Referências</h2>
-					<ul>
-                        <li><a href="http://grails.org/">Grails</li>
-                        <li><a href="http://mrhaki.blogspot.com.br/">Mr. Haki - Groovy and Grails Goodness</li>
-                        <li><a href="http://groovy-lang.org/">Groovy - Site oficial</a></li>
-                        <li><a href="http://groovy-lang.org/">Groovy - Site oficial</a></li>
-                        <li><a href="http://lmgtfy.com/?q=grails+groovy/">e muitas outras fontes online ...</a></li>
-					</ul>
-				</section>
-
 				<section>
 					<h2>Fim</h2>
 
                     <h4 style="margin:30px;">Uilian Souza </h4>
                     <p><small><a href="http://www.uilian.com/">uilian.com</a> / <a href="mailto:uilian@gmail.com">uilian@gmail.com</a> / <a href="http://twitter.com/uilian">@uilian</a></small></p>
 
+                    <p class="fragment">
+                        Vocês conseguiram achar o <a href="#/sld_resp">Geninho na apresentação</a>?
+                    </p>
+                    <div class="fragment">
+                            <img src="imgs/geninho.jpg" width="250px" />
+                    </div>
 				</section>
+                <section>
+                    <h2>Demo</h2>
+                    <pre><code style="font-size: 24px; margin-top: 10px;">
+/*
+                           .-.
+                           | |
+                           | |   .-.
+                           | |-._| |
+                           |_| | | |
+                          / )|_|_|-|
+                         | | `-^-^ |
+                         |     ||  |
+                         \     '   /
+                          |       |
+                          |       |
 
+*/
+                    </code></pre>
+                </section>
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -525,8 +608,8 @@ class BookController {       | class AnotherController {
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
-                parallaxBackgroundImage: 'imgs/reveal-parallax-3.jpg',
-				parallaxBackgroundSize: '2559px 819px',
+                parallaxBackgroundImage: 'imgs/reveal-parallax-6.jpg',
+				parallaxBackgroundSize: '2200px 1173px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
