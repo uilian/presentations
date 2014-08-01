@@ -107,12 +107,9 @@
                     </section>
                     <section id="sld_resp">
                         <h3>Integração de mão dupla com Java out-of-the-box</h3>
-
-                        <p class="fragment" data-fragment-index="1">Permite o uso de bibliotecas e código Java</p>
-                        <div class="fragment" data-fragment-index="3">
-                            <img width="256" src="imgs/groovydukemed.jpg" alt="Groovy" />
-                        </div>
-                        <p class="fragment" data-fragment-index="2">Código fonte Groovy compila para bytecode Java</p>
+                        <p>Permite o uso de bibliotecas e código Java</p>
+                        <div><img width="300px" src="imgs/groovydukemed.jpg" alt="Groovy" /></div>
+                        <p>Código fonte Groovy compila para bytecode Java</p>
 
                         <aside class="notes">
                             O ponto aqui é ressaltar que muita coisa já existe pronta em Java,
@@ -134,7 +131,6 @@
                             outras pessoas fariam uma lista diferente.
                         </aside>
                     </section>
-
                     <section>
                         <h2>Closures</h2>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
@@ -152,7 +148,6 @@ println soma(4, 10)        // retorna 14
                             - Encapsulamento, expressividade / legibilidade.
                         </aside>
                     </section>
-
                     <section>
                         <h2>Groovy Truth</h2>
                         <p>
@@ -169,7 +164,6 @@ def n = 1                    | def n = 0
 def obj = new Object()       | def obj = null
                         </code></pre>
                     </section>
-
                     <section>
                         <h2>Elvis Operator</h2>
                         <p>Forma reduzida do operador ternário</p>
@@ -186,11 +180,9 @@ a != null ? a : b
                             Merece ser citado porque Elvis é o rei :)
                         </aside>
                     </section>
-
                     <section>
                         <h2>GStrings</h2>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
-
 // Múltiplas linhas
 """
 Este é um
@@ -198,10 +190,8 @@ texto muito
 longo
 """
 
-
 // Interpolação de variáveis e expressões
 "1 + 1 = ${1+1}"
-
 
 // Expressões regulares
 "12345 world!".replaceAll(/\d+/, 'Hello')
@@ -210,7 +200,6 @@ longo
                             Groovy adiciona muitos métodos utilitários às Strings Java.
                         </aside>
                     </section>
-
                     <section>
                         <h2>Collections</h2>
                         <pre><code data-trim style="font-size: 24px; margin-top: 20px;">
@@ -228,12 +217,10 @@ map.get("cidade")    // "Porto Alegre"
 
                         </code></pre>
                     </section>
-
                     <section>
                         <h2>Traits e Mixins</h2>
                         <pre><code data-trim style="font-size: 20px; margin-top: 10px;">
 trait FlyingAbility { String fly() { "I'm flying!" } }
-
 trait WalkAbility { String walk() { "I'm walking!" } }
 
 class Thing implements FlyingAbility { }
@@ -265,7 +252,6 @@ d.fly(); d.walk()
                             <small>Fonte: <a href="http://chrisdail.com/wp-content/uploads/2010/05/GroovyPrimer.pdf">chrisdail.com</a></small>
                         </p>
                     </section>
-
                     <section><img src="imgs/step1.png"/></section>
                     <section><img src="imgs/step2.png"/></section>
                     <section><img src="imgs/step3.png"/></section>
@@ -287,16 +273,14 @@ d.fly(); d.walk()
 				</section>
 
                 <section>
-                    <h2>Grails</h2>
-                    <section>
-                        <img src="imgs/grails_full_stack.jpg" class="stretch"/>
-                        <aside class="notes">
-                            Database management (GORM)
-                            Presentation Layer (User Interface)
-                            Service Layer
-                            Configuration
-						</aside>
-                    </section>
+					<h2>Grails</h2>
+					<img src="imgs/grails_full_stack.jpg" class="stretch"/>
+					<aside class="notes">
+						Database management (GORM)
+						Presentation Layer (User Interface)
+						Service Layer
+						Configuration
+					</aside>
                 </section>
 
 				<section>
@@ -345,7 +329,6 @@ d.fly(); d.walk()
                             <li>Scaffolding </li>
                         </ul>
                     </section>
-
                     <section>
                         <img src="imgs/gsp-sample.png" width="100%"/>
                         <aside class="notes">
@@ -360,7 +343,6 @@ d.fly(); d.walk()
 
                         </aside>
                     </section>
-
 					<section>
 						<h2>Scaffolding</h2>
                         <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
@@ -387,7 +369,6 @@ class BookController {       | class AnotherController {
                             da interface, como o Twitter Bootstrap, Fields (para os campos).
                         </aside>
 					</section>
-
                     <section id="sld_sample_taglib">
                         <img src="imgs/taglib-sample.png" width="100%"/>
                         <pre class="fragment"><code data-trim style="font-size: 24px; margin-top: 10px;">
@@ -397,7 +378,6 @@ ${flash.message}
 </bootstrap:alert>
                         </code></pre>
                     </section>
-
                     <section>
                         <h3>Assets pipeline *</h3>
                         <ul>
@@ -429,8 +409,8 @@ class SampleController {
 // Por convenção, o mapeamento para as
 // seguintes URL e view será:
 
-Requisição -> [grails-app]/sample/world
-Retorno    -> [grails-app]/views/sample/world.gsp
+Requisição -> grails-app/sample/world
+Retorno    -> grails-app/views/sample/world.gsp
 
                         </code></pre>
                         <aside class="notes">
@@ -463,16 +443,123 @@ class SomeController {
                     <section>
                         <h3>UrlMappings</h3>
                         <ul>
-                            <li>A convenção é <code>/controller/action/id</code></li>
-                            <li>Pode ser alterada em <code>[grails-app]/conf/UrlMappings.groovy</code></li>
-                            <li>Permite agrupar ações que compartilham caminhos</li>
-                            <li>É possível redirecionar para URI</li>
-                            <li>Mapeamento REST para controllers por convenção (<em> a partir da 2.3</em>)</li>
+                            <li>Por convenção os mapeamentos são definidos no formato <code>/controller/action/id</code></li>
+                            <li>As configurações são armazenadas no arquivo <code>grails-app/conf/UrlMappings.groovy</code></li>
+                            <li>Permite agrupar ações que compartilham caminhos (<em>2.3 em diante</em>)</li>
+                            <li>É possível configurar redirecionamentos para URIs</li>
+                            <li>Mapeamento REST para controllers por convenção (<em>2.3 em diante</em>)</li>
                         </ul>
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+//
+// Mapeamento padrão de uma aplicação recém criada
+//
+class UrlMappings {
+        static mappings = {
+        "/$controller/$action?/$id?(.$format)?"{
+            constraints {
+                // apply constraints here
+            }
+        }
 
+        "/"(view:"/index")
+        "500"(view:'/error')
+        }
+}
+                        </code></pre>
                     </section>
                 </section>
 
+                <section>
+                    <section>
+                        <h3>Services</h3>
+                        <ul>
+                            <li>Declarados em <code>grails-app/services/</code></li>
+                            <li>Injetados nas classes que os utilizam</li>
+                            <li>Transacionais por padrão</li>
+                            <li>Singletons</li>
+                        </ul>
+                        <p>Dê preferência por serviços para orquestrar interações
+                            entre recursos da aplicação (domain objects) ou externas (IO).</p>
+                        <aside class="notes">
+                            Devem sempre que possível ser mantidos stateless, mas é possível alterar o escopo.
+                            São Spring Beans, e podemos tirar vantagem disso para configuração e controle de transações.
+                            Serviços são utilizados principalmente pensando em remover complexidade
+                            da camada de visão.
+                        </aside>
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+class SomeService {
+    void someMethod(param) {
+        // do something
+    }
+}
+/******************************/
+class FirstController {
+    def someService
+
+    def someAction() {
+        try {
+            someService.someMethod(params.id)
+        } catch(e) {
+            log.error e
+        }
+    }
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Persistência</h3>
+                        <ul>
+                            <li>GORM == Hibernate sem dor </li>
+                            <li><code>grails-app/conf/DataSource.groovy</code></li>
+                            <li>Dynamic finders</li>
+                            <li>Criteria queries</li>
+                            <li>Database migrations</li>
+                            <li>Herança de domínios</li>
+                        </ul>
+                        <aside class="notes">
+                            Herança: table-per-hierarchy / table-per-subclass
+                        </aside>
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+dataSource {
+    pooled = true
+}
+
+hibernate {
+    cache.use_second_level_cache = true
+    cache.use_query_cache = false
+    cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory'
+    singleSession = true // configure OSIV singleSession mode
+}
+
+environments {
+    development {
+        dataSource {
+            dbCreate = "create-drop"
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            driverClassName = "org.h2.Driver"
+            ...
+        }
+    }
+    production {
+        dataSource {
+             dbCreate = "update"
+             url = "jdbc:postgresql://192.168.0.1/SOME_DATABASE"
+             driverClassName = "org.postgresql.Driver"
+             ...
+        }
+    }
+}
+                    </section>
+                </section>
 
                 <!--  CORTE  -------------------------------------->
                 <!--  CORTE  -------------------------------------->
@@ -480,7 +567,7 @@ class SomeController {
 
 				<section>
                     <section>
-                        <img class="stretch" src="imgs/balboa.jpg"/>
+                        <p><img class="stretch" src="imgs/balboa.jpg"/></p>
                     </section>
                     <section>
                         <h3>Ou seja, o difícil não é fácil</h3>
@@ -565,7 +652,7 @@ class SomeController {
                 <section>
                     <h2>Demo</h2>
                     <pre><code style="font-size: 24px; margin-top: 10px;">
-/*
+
                            .-.
                            | |
                            | |   .-.
@@ -578,7 +665,6 @@ class SomeController {
                           |       |
                           |       |
 
-*/
                     </code></pre>
                 </section>
 			</div>
