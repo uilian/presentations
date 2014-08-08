@@ -64,10 +64,12 @@
                     </section>
                     <section>
                         <h2>Pontos fortes</h2>
-                        <p>O ciclo de desenvolvimento é rápido</p>
-                        <p>Grande variedade de plugins disponíveis</p>
-                        <p>Aplicar alterações em configurações e fontes não depende de reiniciar o servidor</p>
-                        <p>Excelente documentação (e muitos livros)</p>
+                        <ul>
+                            <li>O ciclo de desenvolvimento é rápido</li>
+                            <li>Grande variedade de plugins disponíveis</li>
+                            <li>Aplicar alterações em configurações e fontes não depende de reiniciar o servidor</li>
+                            <li>Excelente documentação (e muitos livros)</li>
+                        </ul>
                     </section>
                     <aside class="notes">
                         Estes são os pontos que melhor definem e diferenciam o Grails
@@ -107,9 +109,9 @@
                     </section>
                     <section id="sld_resp">
                         <h3>Integração de mão dupla com Java out-of-the-box</h3>
-                        <p>Permite o uso de bibliotecas e código Java</p>
-                        <div><img width="300px" src="imgs/groovydukemed.jpg" alt="Groovy" /></div>
-                        <p>Código fonte Groovy compila para bytecode Java</p>
+                        <h4>Permite o uso de bibliotecas e código Java</h4>
+                        <div><img width="200px" src="imgs/groovydukemed.jpg" alt="Groovy" /></div>
+                        <h4>Código fonte Groovy compila para bytecode Java</h4>
 
                         <aside class="notes">
                             O ponto aqui é ressaltar que muita coisa já existe pronta em Java,
@@ -119,9 +121,6 @@
                             Ex: Pentaho (PDI, PRD).
                         </aside>
                     </section>
-				</section>
-
-                <section>
                     <section>
                         <h3>Features</h3>
                         <aside class="notes">
@@ -315,6 +314,12 @@ d.fly(); d.walk()
 |- test              // Testes unitários
 |- web-app           // Imagens, CSS, JS, HTML ...
                         </code></pre>
+                        <aside class="notes">
+                            O que ajustar: <br/>
+                            - O arquivo conf/Config.groovy, opções de log <br/>
+                            - Falar sobre o Asset Plugin, e que ele substitui
+                            o Resources Plugin.
+                        </aside>
                     </section>
                 </section>
 
@@ -328,6 +333,11 @@ d.fly(); d.walk()
                             <li>Taglibs são <a href="#/sld_sample_taglib">muito simples</a></li>
                             <li>Scaffolding </li>
                         </ul>
+                        <aside class="notes">
+                            Templates ficam na pasta views/layout/, podem ser personalizados
+                            de acordo com as necessidades do sistema, e até mesmo criar vários. <br/>
+                            Scaffolding também pode ser personalizado, como vamos ver mais adiante.
+                        </aside>
                     </section>
                     <section>
                         <img src="imgs/gsp-sample.png" width="100%"/>
@@ -383,7 +393,7 @@ ${flash.message}
                         <ul>
                             <li>Otimização e organização do uso de recursos estáticos nas páginas.</li>
                             <li>Atualização on-the-fly, alterações são disponibilizadas sem reload.</li>
-                            <li>Redução do tamanho das depenências, através da compressão, minificação e cache (UglifyJS).</li>
+                            <li>Redução do tamanho das dependências, através da compressão, minificação e cache (UglifyJS).</li>
                             <li>Dependências e ordem de carga são configuráveis diretamente nos CSS e JS.</li>
                             <li>Suporte à compilação de recursos estáticos LESS, SASS/SCSS, Handlebars, Ember, CoffeScript.</li>
                         </ul>
@@ -521,14 +531,15 @@ class FirstController {
                             <li>Dynamic finders</li>
                             <li>Criteria queries</li>
                             <li>Database migrations</li>
-                            <li>Herança de domínios</li>
+                            <li><strike>Herança de domínios</strike></li>
                         </ul>
                         <aside class="notes">
-                            Herança: table-per-hierarchy / table-per-subclass
+                            Herança de domínios pode ser de dois tipos: table-per-hierarchy (d) / table-per-subclass
                         </aside>
                     </section>
                     <section>
-                        <pre><code data-trim style="font-size: 24px; margin-top: 10px;">
+                        <pre><code data-trim class="stretch" style="font-size: 22px;">
+/// DataSource.groovy
 dataSource {
     pooled = true
 }
@@ -536,15 +547,15 @@ dataSource {
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
-    cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory'
-    singleSession = true // configure OSIV singleSession mode
+    cache.region.factory_class=
+            'org.hibernate.cache.ehcache.EhCacheRegionFactory'
 }
 
 environments {
     development {
         dataSource {
             dbCreate = "create-drop"
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             driverClassName = "org.h2.Driver"
             ...
         }
@@ -558,6 +569,53 @@ environments {
         }
     }
 }
+</code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim style="font-size: 22px; margin-top: 10px;">
+class Book {
+    String title
+    static belongsTo = Author
+    static hasMany = [authors : Author]
+    static constraints = {name nullable: false}
+}
+
+class Author {
+    String name
+    static hasMany = [books : Book]
+}
+
+def a = new Author(name:"Author One")
+a.addToBooks(new Book(title:"Book One"))
+a.addToBooks(new Book(title:"Book Two"))
+a.save()
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim class="stretch" style="font-size: 22px;">
+// Acesso direto por id
+def book = Book.get(1)
+// Dynamic Finders
+def book = Book.findByTitle("Book One")
+def books = Book.findByTitleIlike("Book%")
+def books = Book.findByAuthor(Author.get(1))
+// Where Queries
+def query = Book.where{title like "Book%"}
+def aQuery = query.where{authors {name == "Author One"}}
+Book b = aQuery.find()
+// Criteria Queries
+def c = Book.createCriteria()
+def results = c.list(max:4, sort:"title") {
+    and {
+        ilike("title", "Book%")
+        authors{
+            eq("name", "Author One")
+        }
+    }
+    maxResults(10)
+    order("holderLastName", "desc")
+}
+                        </code></pre>
                     </section>
                 </section>
 
@@ -582,24 +640,24 @@ environments {
                         <aside class="notes">
                             1- É especialmente verdadeiro quando se utilizam muitos plugins.
                             As atualizações do framework não mantém compatibilidade com versões anteriores.
-                        </br>
+                            <br/>
                             2- O que é bom e ruim ao mesmo tempo. Se bem utilizado, Grails pode
                             dar um ganho de produtividade considerável. Mas confiança cega,
                             super-utilização, e a falta de conhecimento vão gerando débito técnico
                             pelo caminho, como qualquer outro framework.
-                        </br>
+                            <br/>
                             3- As IDEs que oferecem bom suporte à Groovy e Grails são Intellij IDEA e GGTS.
                             Mas eu aconselho utilizar apenas quando realmente for necessário, principalmente
                             enquanto estiver aprendendo a linguagem. Principalmente o GGTS, que é baseado em
                             Eclipse, gera muito lixo por baixo dos panos, que é necessário para seu funcionamento,
                             e nada tem a ver com Grails. IDEA só tem suporte ao Grails na versão paga.
-                        </br>
+                            <br/>
                             4- Com grandes poderes vem grandes responsabilidades. O uso indiscriminado de "def"
                             outras estruturas "groovyanas" podem gerar código obscuro e díficil de manter.
-                        </br>
+                            <br/>
                             5- Na prática, isso significa que para programadores que tenham escalabilidade como
                             pré-requisito talvez devessem considerar outras opções antes do Grails.
-                        </br>
+                            <br/>
                             6- Existe um ecosistema todo relacionado ao Grails, e para tirar vantagem real desta plataforma,
                             é melhor investir tempo para aprender todas as ferramentas.
                         </aside>
