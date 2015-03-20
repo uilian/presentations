@@ -54,7 +54,7 @@
 					</section>
 
                     <section>
-                        <h4>Instalando Git - no Windows</h4>                        
+                        <h3>Instalando Git - no Windows</h3>                        
                         <pre>
                         	<code style="font-size: 24px;"  class="bash">
             # SourceTree
@@ -64,7 +64,7 @@
                     </section>
 
                     <section>
-                        <h4>Criando um repositório</h4>                        
+                        <h3>Criando um repositório</h3>                        
                         <pre>
                         	<code style="font-size: 22px;" class="bash">
 ~ $ git init     # Inicializa um novo repositório do Git.
@@ -77,22 +77,17 @@
                     </section>                    
 
                     <section>
-                        <h4>Gravando alterações</h4>                        
+                        <h3>Gravando alterações</h3>                        
                         <pre>
-                        	<code style="font-size: 24px;"  class="bash">
-
+							<code style="font-size: 24px; line-height: 110%;"  class="bash">
 # Adiciona arquivos modificados ao snapshot.
-~ $ git add     
-
+~ $ git add
 # Exibe o estado atual do diretório de trabalho e snapshot.
-~ $ git status  
-
+~ $ git status
 # Salva o snapshot no histórico do projeto. 
-~ $ git commit  
-
+~ $ git commit
 # Exibe uma listagem com as versões anteriores de um projeto. 
 ~ $ git log     
-
             				</code>
                         </pre>
                     </section>             
@@ -104,19 +99,106 @@
 					</section>
 
                     <section>
-                        <h4>Instalando Git - no Windows</h4>                        
+                        <h3>Exemplo</h3>                                                
                         <pre>
-                        	<code style="font-size: 24px;"  class="bash">
-            # SourceTree
-            http://www.sourcetreeapp.com/download/
-            				</code>
+                        	<code style="font-size: 24px; line-height: 110%;"  class="bash">
+# Cria uma cópia local do projeto.
+~ $ git clone ssh://user@host/path/to/repo.git
+# Efetuar checkout em um banch ja existente
+~ $ git checkout develop 
+# Criar um novo branch 
+~ $ git checkout -b [BRANCH_NAME] 
+# Verificar a existência de modificações.
+~ $ git status 
+# Inclui modificações na área de staging.
+~ $ git add [arquivo, ou wildicard] 
+# Commit do conteudo dá área de staging.
+~ $ git commit -m "Comentário útil!!!" 
+# Envia a atualização do branch local para o servidor
+~ $ git push origin [BRANCH_NAME]</code>
                         </pre>
                     </section>
+                    <section>
+                        <h3>Workflows</h3>                  
+                        <ul>                        	
+                        	<li><b>Centralizado:</b><div>Todos compartilham um mesmo branch de desenvolvimento.</div></li>
+                        	<li><b>Branches por feature:</b><div>Cada novo desenvolvimento dá origem a um branch.</div></li>
+                        	<li><b>Gitflow:</b><div>Impõe um padrão à forma de trabalhar com branches por feature.</div></li>
+                        	<li><b>Forking:</b><div>Cada desenvolvedor trabalha sobre uma cópia do repositório remoto.</div></li>
+                        </ul>
+                    </section>                    
+
+					<section>
+                        <h3>Git-Flow</h3>
+                        <h4>Feature branches + padrão de uso</h4>
+                    </section>
+
+                    <section>
+                        <pre>
+                        	<code style="font-size: 22px; line-height: 110%;"  class="bash">
+~ $ git-flow
+usage: git flow [subcommand]
+
+Available subcommands are:
+   init      Initialize a new git repo with the branching model.
+   feature   Manage your feature branches.
+   release   Manage your release branches.
+   hotfix    Manage your hotfix branches.
+   support   Manage your support branches.
+   version   Shows version information.
+
+Try 'git flow [subcommand] help' for details.
+							</code>
+						</pre>
+	                </section>
+
+
+                    <section>
+                        <pre>
+                        	<code style="font-size: 22px; line-height: 110%;"  class="bash">
+myproject $ git flow init
+Initialized empty Git repository in ~/myproject/.git/
+No branches exist yet. Base branches must be created now.
+
+Branch name for production releases: [master]
+Branch name for "next release" development: [develop]
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? [] 
+							</code>
+						</pre>
+	                </section>
+	                <section>
+                        <img src="images/git-model.png" class="stretch" />
+                        <br><small>Autor: <a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen</a></small>
+	                </section>
                 </section>
 
+				<section>
+                	<h3>Livros</h3>                 
+            	    	<a href="http://chimera.labs.oreilly.com/books/1230000000561">
+            	    		<img src="images/gitpg.jpg" class="stretch"/>
+            	    	</a>
+            	    	<a href="http://git-scm.com/book/en/v2" >
+            	    		<img src="images/progit2.png"  class="stretch"/>
+            	    	</a>
+                </section>	
+                
+                <section>
+                    <h3>Referências</h3>                    
+                    <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/">Comparando workflows</a></p>
+                    <p><a href="https://www.atlassian.com/git/tutorials/">Tutoriais Atlassian</a></p>                   
+                    <p><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model
+</a></p>
+                    <p><a href="http://41j.com/blog/2015/02/common-git-screwupsquestions-solutions/">Problemas comuns e soluções</a></p>                  
+                </section>
 
 				<section>
-                    <pre><code style="font-size: 20px; margin-top: 10px;">
+                    <pre><code style="font-size: 20px; margin-top: 10px;" class="dos">
 
                         -=[ "live long and prosper" ]=-  
                          
@@ -171,6 +253,5 @@
 			});
 
 		</script>
-
 	</body>
 </html>
