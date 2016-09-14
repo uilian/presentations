@@ -58,9 +58,8 @@
                         <ul>
                             <li>Linguagem de alto nível, de propósito geral, multi paradigma.</li>
                             <li>Interpretada, fortemente e dinamicamente tipada.</li>
-                            <li>Foco na legibilidade do código.</li>
-                            <li>Sintaxe concisa e clara.</li>
-                            <li>Disponibiliza muitos recursos através tanto da sua uma biblioteca padrão quanto por módulos e frameworks de terceiros. </li>
+                            <li>Foco na legibilidade do código com uma sintaxe concisa e clara.</li>
+                            <li>Disponibiliza muitos recursos através tanto da sua biblioteca padrão quanto por módulos e frameworks de terceiros.</li>
                             <li>Muito utilizada para processamento de texto, dados científicos e sistemas para a web.</li>                            
                             <li>Versões principais: 2.7 e 3.x</li>
                         </ul>
@@ -140,9 +139,10 @@
                     <section>
                         <h4>Fluxo de requisições</h4>
                         <img class="stretch" src="images/djangoflow.png">
-                    </section>                
+                    </section> 
+
                     <section>
-                        <h3>Models</h3>
+                        <h3>Models.py</h3>
 <pre><code style="font-size: 22px; line-height: 110%;"  class="python">from django.db import models
 from django.utils import timezone
 
@@ -163,8 +163,8 @@ class Post(models.Model):
                     </section>
 
                     <section>
-                        <h3>URLs</h3>
-                        <small>(alguém disse "expressões regulares"?)</small>
+                        <h3>URLS.py</h3>
+                        <small>(Alguém disse <em>expressões regulares</em>?)</small>
 <pre><code style="font-size: 22px; line-height: 110%;"  class="python">from django.conf.urls import url
 from . import views
 
@@ -210,7 +210,7 @@ def year_archive(request, year):
                     <section>
                         <h3>Templates - base</h3>                        
                         <img src="images/base.png" class="stretch">
-                    </section>
+                    </section> 
                 </section>
 
                 <section>
@@ -246,19 +246,19 @@ def year_archive(request, year):
 				<section>
                     <pre><code style="font-size: 20px; margin-top: 10px;" class="dos">
 
-                        -=[ "live long and prosper" ]=-  
-                         
-                                        _   
-                                     .-T |   _
-                                     | | |  / |
-                                     | | | / /`|
-                                  _  | | |/ / /
-                                  \`\| '.' / /
-                                   \ \`-. '--|
-                                    \    '   |
-                                     \  .`  /
-                                      |    |
-     
+                    -=[ "live long and prosper" ]=-  
+                     
+                                    _   
+                                 .-T |   _
+                                 | | |  / |
+                                 | | | / /`|
+                              _  | | |/ / /
+                              \`\| '.' / /
+                               \ \`-. '--|
+                                \    '   |
+                                 \  .`  /
+                                  |    |
+ 
 
                     </code></pre>
                     <h4 style="margin:30px;">Uilian Souza </h4>
