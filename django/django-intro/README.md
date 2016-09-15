@@ -1,4 +1,4 @@
-# Git 101
+# Django 101
 
 
-Copyright (C) 2015 Uilian Souza, http://www.uilian.com
+Copyright (C) 2016 Uilian Souza, http://www.uilian.com

@@ -39,13 +39,13 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background="images/django.png" >                    
+				<section data-background="images/django.png" >
 				</section>
 
                 <section>
 					<section>
-	                    <h3>O que é o Django</h3>   
-                        <ul>                                             
+	                    <h3>O que é o Django</h3>
+                        <ul>
                             <li class="fragment">Framework web opensource escrito em Python.</li>
                             <li class="fragment">Segue o padrão <strike>MVT</strike> <strong>MVC</strong>.</li>
                             <li class="fragment">Ênfase em simplicidade e rapidez no desenvolvimento.</li>
@@ -60,8 +60,9 @@
                             <li>Interpretada, fortemente e dinamicamente tipada.</li>
                             <li>Foco na legibilidade do código com uma sintaxe concisa e clara.</li>
                             <li>Disponibiliza muitos recursos através tanto da sua biblioteca padrão quanto por módulos e frameworks de terceiros.</li>
-                            <li>Muito utilizada para processamento de texto, dados científicos e sistemas para a web.</li>                            
-                            <li>Versões principais: 2.7 e 3.x</li>
+                            <li>Muito utilizada para processamento de texto, dados científicos e sistemas para a web.</li>
+                            <li>Você vai ter que escolher entre duas versões: 2.7 e 3.x.</li>
+                            <li>A formatação do código é muito importante (<a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 - Style Guide for Python Code</a>)</li>
                         </ul>
                     </section>
 
@@ -85,11 +86,12 @@
                 <section>
                     <h3>Estrutura das aplicações Django</h3>
                     <img class="stretch" src="images/app-structure.jpg">
+                    <p><small>Fonte: <a href="http://pt.slideshare.net/ryates/jumpstart-django">http://pt.slideshare.net/ryates/jumpstart-django</a></small></p>
                 </section>
 
                 <section>
                     <section>
-                        <h3>Criando um projeto</h3>                        
+                        <h3>Criando um projeto</h3>
 <pre><code style="font-size: 24px; line-height: 110%;"  class="bash"># Execute o comando
 ~ $ django-admin startproject meuprojeto .
 
@@ -97,7 +99,7 @@
 ~
 |
 ├─ manage.py     # script de gerenciamento
-└─ meuprojeto     
+└─ meuprojeto
     settings.py  # configurações do projeto
     urls.py      # lista de mapeamentos de urls
     wsgi.py
@@ -106,8 +108,8 @@
                     </section>
 
                     <section>
-                        <h3>Executando o projeto</h3>                        
-<pre><code style="font-size: 24px; line-height: 110%;"  class="bash">   
+                        <h3>Executando o projeto</h3>
+<pre><code style="font-size: 24px; line-height: 110%;"  class="bash">
 # Dentro da pasta do projeto
 ~ $ python manage.py runserver
         </code></pre>
@@ -115,10 +117,10 @@
                     </section>
 
                     <section>
-                        <h3>Criando uma aplicação</h3>                        
+                        <h3>Criando uma aplicação</h3>
 <pre><code style="font-size: 24px; line-height: 110%;"  class="bash"># Rodar no diretório do projeto
 ~ $ python manage.py startapp app
-~ # A nova estrutura do projeto 
+~ # A nova estrutura do projeto
 ├── manage.py
 ├── meuprojeto
 |      ... # idem ao slide anterior
@@ -131,7 +133,7 @@
     ├── tests.py
     └── views.py
        </code></pre>
-    
+
                     </section>
                 </section>
 
@@ -139,7 +141,8 @@
                     <section>
                         <h4>Fluxo de requisições</h4>
                         <img class="stretch" src="images/djangoflow.png">
-                    </section> 
+                        <p><small>Fonte: <a href="http://www.slideshare.net/balakumarp/django-framework">http://www.slideshare.net/balakumarp/django-framework</a></small></p>
+                    </section>
 
                     <section>
                         <h3>Models.py</h3>
@@ -169,11 +172,11 @@ class Post(models.Model):
 from . import views
 
 urlpatterns = [
-    url(r'^articles/([0-9]{4})/$', 
+    url(r'^articles/([0-9]{4})/$',
         views.year_archive),
-    url(r'^articles/([0-9]{4})/([0-9]{2})/$', 
+    url(r'^articles/([0-9]{4})/([0-9]{2})/$',
         views.month_archive),
-    url(r'^articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', 
+    url(r'^articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$',
         views.article_detail),
 ]
 </code></pre>
@@ -191,7 +194,7 @@ def year_archive(request, year):
 </code></pre>
                     </section>
                     <section>
-                        <h3>Templates - fragmento</h3>                        
+                        <h3>Templates - fragmento</h3>
 <pre><code style="font-size: 22px; line-height: 110%;"  class="html">{% extends "base.html" %}
 
 {% block title %}Articles for {{ year }}{% endblock %}
@@ -208,9 +211,9 @@ def year_archive(request, year):
 </code></pre>
                     </section>
                     <section>
-                        <h3>Templates - base</h3>                        
+                        <h3>Templates - base</h3>
                         <img src="images/base.png" class="stretch">
-                    </section> 
+                    </section>
                 </section>
 
                 <section>
@@ -226,29 +229,29 @@ def year_archive(request, year):
                         <li>Instagram</li>
                         <li>Disqus</li>
                         <li>Bitbucket</li>
-                        <li>Nasa</li>                        
+                        <li>Nasa</li>
                     </ul>
                     <p><small>Fonte: <a href="https://www.quora.com/What-are-some-well-known-sites-running-on-Django">Quora.com - What-are-some-well-known-sites-running-on-Django</a></small></p>
                 </section>
 
 
 				<section>
-                    <h3>Referências</h3>                    
+                    <h3>Referências</h3>
                     <ul>
                         <li><a href="https://docs.djangoproject.com/en/1.10/">Documentação Oficial Django</a></li>
-                        <li><a href="http://www.slideshare.net/accavdar/django-best-practices-46944311">Django Best Practices</a></li>                   
+                        <li><a href="http://www.slideshare.net/accavdar/django-best-practices-46944311">Django Best Practices</a></li>
                         <li><a href="https://github.com/vinta/awesome-python">Lista de recursos sobre Django/Python</a></li>
                         <li><a href="https://learnxinyminutes.com/docs/python3/">Resumão de Python 3</a></li>
-                        <li><a href="https://mva.microsoft.com/en-us/training-courses/developing-websites-using-python-and-django-11415">Curso de Django no MVA</a></li>                 
-                    </ul>                                       
+                        <li><a href="https://mva.microsoft.com/en-us/training-courses/developing-websites-using-python-and-django-11415">Curso de Django no MVA</a></li>
+                    </ul>
                 </section>
 
 				<section>
                     <pre><code style="font-size: 20px; margin-top: 10px;" class="dos">
 
-                    -=[ "live long and prosper" ]=-  
-                     
-                                    _   
+                    -=[ "live long and prosper" ]=-
+
+                                    _
                                  .-T |   _
                                  | | |  / |
                                  | | | / /`|
@@ -258,7 +261,7 @@ def year_archive(request, year):
                                 \    '   |
                                  \  .`  /
                                   |    |
- 
+
 
                     </code></pre>
                     <h4 style="margin:30px;">Uilian Souza </h4>
