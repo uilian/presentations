@@ -1,199 +1,241 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Docker</title>
+        <title>Docker</title>
 
-		<meta name="description" content="Beginning with docker.">
-		<meta name="author" content="Uilian Souza">
+        <meta name="description" content="Beginning with docker.">
+        <meta name="author" content="Uilian Souza">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
         <!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-background="images/docker.jpg" >
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background="images/docker.jpg" >
                     <h2>Docker e Docker-Compose</h2>
-                    <p>
-                        <a href="http://www.uilian.com/">www.uilian.com</a> |
-                        <a href="mailto:uilian@gmail.com">uilian@gmail.com</a> |
-                        <a href="http://twitter.com/uilian">@uilian</a>
-                    </p>
-				</section>
-
-                <section>
-					<section>
-	                    <h3>Git Essencial</h3>
-					</section>
-
-                    <section>
-                        <h3>Instalando Git - no Windows</h3>
-		            	<p>SourceTree: <a href="http://www.sourcetreeapp.com/download/">http://www.sourcetreeapp.com/</a></p>
-						<img src="images/sourcetree.png" class="stretch" />
-                    </section>
-
-                    <section>
-                        <h3>Criando um repositório</h3>
-                        <pre>
-                        	<code style="font-size: 22px;" class="bash">
-~ $ git init     # Inicializa um novo repositório do Git.
-
-~ $ git clone    # Cria uma cópia local de um repositório existente.
-
-~ $ git config   # Utilizado para configurar parâmetros da ferramenta.
-            				</code>
-                        </pre>
-                    </section>
-
-                    <section>
-                        <h3>Gravando alterações</h3>
-                        <pre>
-							<code style="font-size: 24px; line-height: 110%;"  class="bash">
-# Adiciona arquivos modificados ao snapshot.
-~ $ git add
-# Exibe o estado atual do diretório de trabalho e snapshot.
-~ $ git status
-# Salva o snapshot no histórico do projeto.
-~ $ git commit
-# Exibe uma listagem com as versões anteriores de um projeto.
-~ $ git log
-            				</code>
-                        </pre>
-                    </section>
                 </section>
 
                 <section>
-					<section>
-	                    <h3>Git Básico</h3>
-					</section>
+                    <section>
+                        <h3>O que é o Docker</h3>
+                        <p>Uma plataforma open-source que permite a criação de
+                        containers isolados para aplicações e serviços.</p>
+                    </section>
 
                     <section>
-                        <h3>Exemplo</h3>
-                        <pre>
-                        	<code style="font-size: 24px; line-height: 110%;"  class="bash">
-# Cria uma cópia local do projeto.
-~ $ git clone ssh://user@host/path/to/repo.git
-# Efetuar checkout em um banch ja existente
-~ $ git checkout develop
-# Criar um novo branch
-~ $ git checkout -b [BRANCH_NAME]
-# Verificar a existência de modificações.
-~ $ git status
-# Inclui modificações na área de staging.
-~ $ git add [arquivo, ou wildicard]
-# Commit do conteudo dá área de staging.
-~ $ git commit -m "Comentário útil!!!"
-# Envia a atualização do branch local para o servidor
-~ $ git push origin [BRANCH_NAME]</code>
-                        </pre>
+                        <h4>Containers vs. VMs</h4>
+                        <img src="images/vm-vs-docker-container.png" class="stretch" />
                     </section>
+
                     <section>
-                        <h3>Workflows</h3>
+                        <h4>Principais vantagens</h4>
                         <ul>
-                        	<li><b>Centralizado:</b><div>Todos compartilham um mesmo branch de desenvolvimento.</div></li>
-                        	<li><b>Branches por feature:</b><div>Cada novo desenvolvimento dá origem a um branch.</div></li>
-                        	<li><b>Gitflow:</b><div>Impõe um padrão à forma de trabalhar com branches por feature.</div></li>
-                        	<li><b>Forking:</b><div>Cada desenvolvedor trabalha sobre uma cópia do repositório remoto.</div></li>
+                            <li>Rapidez e segurança na configuração de ambientes
+                            de desenvolvimento, produção e teste.</li>
+                            <li>Uso mais racional dos recursos de hardware.</li>
+                            <li>Facilita a troca de contexto/projeto.</li>
+                            <li>Permite um passo além no versionamento,
+                            incluindo também o ambiente.</li>
+                            <li class="fragment"><strike>“Funciona na minha máquina.”</strike></li>
                         </ul>
                     </section>
+                </section>
 
-					<section>
-                        <h3>Git-Flow</h3>
-                        <h4>Feature branches + padrão de uso</h4>
+                <section>
+                    <section>
+                        <h3>Instalação</h3>
+                        <ul>
+                            <li>
+                                Baixar e instalar o Docker de acordo
+                                com o sistema operacional host
+                            </li>
+                        </ul>
+                            <p><b>ou</b></p>
+                        <ul>
+                            <li>Utilizando o gerenciador de pacotes
+                            (yum, apt-get, chocolatey, etc)</li>
+                        </ul>
+                        <p><a href="https://docs.docker.com/engine/installation/">docs.docker.com/engine/installation/</a></p>
                     </section>
 
                     <section>
-                        <pre>
-                        	<code style="font-size: 22px; line-height: 110%;"  class="bash">
-~ $ git-flow
-usage: git flow [subcommand]
-
-Available subcommands are:
-   init      Initialize a new git repo with the branching model.
-   feature   Manage your feature branches.
-   release   Manage your release branches.
-   hotfix    Manage your hotfix branches.
-   support   Manage your support branches.
-   version   Shows version information.
-
-Try 'git flow [subcommand] help' for details.
-							</code>
-						</pre>
-	                </section>
-
+                        <h4>Docker-Compose</h4>
+                        <ul>
+                            <li>É uma ferramenta para definir e executar aplicações
+                            compostas por múltiplos containers Docker.</li>
+                            <li>Abstrai os comandos e simplifica o
+                            workflows de trabalho com o Docker.</li>
+                        </ul>
+                        <p><a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+                    </section>
 
                     <section>
-                        <pre>
-                        	<code style="font-size: 22px; line-height: 110%;"  class="bash">
-myproject $ git flow init
-Initialized empty Git repository in ~/myproject/.git/
-No branches exist yet. Base branches must be created now.
+                        <h4>Imagens e Containers</h4>
+                        <p>Um container é uma <b>instância</b> de uma imagem.</p>
+                        <p>Imagens são mantidas em um registro (índice), e podem ser
+                        utilizadas diretamente ou estendidas para executar containers.</p>
+<pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+# Lista todas as imagens disponíveis no host
+~ $ docker images
 
-Branch name for production releases: [master]
-Branch name for "next release" development: [develop]
+# Lista todas os containers
+~ $ docker ps -a
+                            </code>
+                        </pre>
+                    </section>
 
-How to name your supporting branch prefixes?
-Feature branches? [feature/]
-Release branches? [release/]
-Hotfix branches? [hotfix/]
-Support branches? [support/]
-Version tag prefix? []
-							</code>
-						</pre>
-	                </section>
-	                <section>
-                        <img src="images/git-model.png" class="stretch" />
-                        <br><small>Autor: <a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen</a></small>
-	                </section>
+                    <section>
+                        <h4>Onde encontrar imagens</h4>
+                        <p><a href="https://hub.docker.com/search/">hub.docker.com</a></p>
+                        <p><a href="https://www.google.com/">Uma busca no Google</a></p>
+                        <p><a href="https://www.github.com/">Diretamente no Github</a></p>
+                    </section>
                 </section>
 
-				<section>
-                	<h3>Livros</h3>
-            	    	<a href="http://chimera.labs.oreilly.com/books/1230000000561">
-            	    		<img src="images/gitpg.jpg" class="stretch"/>
-            	    	</a>
-            	    	<a href="http://git-scm.com/book/en/v2" >
-            	    		<img src="images/progit2.png"  class="stretch"/>
-            	    	</a>
+                <section>
+                    <section>
+                        <h4>Workflow básico</h4>
+                        <ul>
+                            <li>Decida o ambiente necessário.</li>
+                            <li>Baixe as imagens adequadas.</li>
+                            <li>Customize (se necessário).</li>
+                            <li>Configure o ambiente virtual utilizando docker-compose.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Exemplo</h4>
+                        <ul>
+                            <li>Servidor de aplicação Python + Django.</li>
+                            <li>Servidor de banco de dados: Oracle</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Baixar imagens</h4>
+                        <pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+~ $ docker pull sath89/oracle-12c
+~ $ docker pull python:3.5
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>Customização - Dockerfile</h4>
+                        <pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+ FROM python:3.5
+ ENV PYTHONUNBUFFERED 1
+ RUN mkdir /code
+ WORKDIR /code
+ ADD requirements.txt /code/
+ RUN pip install -r requirements.txt
+ ADD . /code/
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h4>Ambiente virtual - docker-compose.yml</h4>
+                        <pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+ version: '2'
+ services:
+   db:
+     image: sath89/oracle-12c
+   web:
+     build: .
+     command: python manage.py runserver 0.0.0.0:8000
+     volumes:
+       - .:/code
+     ports:
+       - "8000:8000"
+     depends_on:
+       - db
+                           </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h4>Interagindo com o ambiente</h4>
+                        <pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+# Executar no diretório do arquivo YML
+# Subir o ambiente completo
+~ $ docker-compose up -d web
+# Quais ambientes estão rodando?
+~ $ docker ps -a
+# Ver logs de um container
+~ $ docker logs -f [id_container]
+# Baixar o ambiente completo
+~ $ docker-compose down
+                           </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>Interagindo com o ambiente - continuação</h4>
+                        <pre>
+                            <code style="font-size: 22px; line-height: 110%;"  class="bash">
+# Conectar em um container em execução
+~ $ docker exec -it [id_container] /bin/bash
+# Parar todos os containers
+$ docker stop $(docker ps -a -q)
+# Remover containers inativos
+~ $ docker rm $(docker ps -a -q)
+# Transferir imagens entre hosts
+$ docker save [image-id] | bzip2 | pv | \
+     ssh user@host 'bunzip2 | docker load'
+~ $ docker ps -a
+# Remover images
+~ $ docker rmi [image-id]
+
+                           </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>Além do básico</h4>
+                        <ul>
+                            <li>Sincronização de ambientes virtuais</li>
+                            <li>Configuração de ambiente de integração contínua</li>
+                            <li>Isolamento e independência das aplicações (db migrations, etc)</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
                     <h3>Referências</h3>
-                    <p><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/">Comparando workflows</a></p>
-                    <p><a href="https://www.atlassian.com/git/tutorials/">Tutoriais Atlassian</a></p>
-                    <p><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model
-</a></p>
-                    <p><a href="http://41j.com/blog/2015/02/common-git-screwupsquestions-solutions/">Problemas comuns e soluções</a></p>
+                    <p><a href="https://docs.docker.com/">docs.docker.com</a></p>
+                    <p><a href="https://hub.docker.com/">hub.docker.com</a></p>
                 </section>
 
-				<section>
+                <section>
                     <pre><code style="font-size: 20px; margin-top: 10px;" class="dos">
 
                         -=[ "live long and prosper" ]=-
@@ -214,40 +256,40 @@ Version tag prefix? []
                     <h4 style="margin:30px;">Uilian Souza </h4>
                     <a href="http://www.uilian.com/">www.uilian.com</a> | <a href="mailto:uilian@gmail.com">uilian@gmail.com</a> | <a href="http://twitter.com/uilian">@uilian</a></small>
                 </section>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-		<script>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
                 slideNumber: true,
-				history: false,
-				center: true,
+                history: false,
+                center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Parallax scrolling
+                // Parallax scrolling
                 // parallaxBackgroundImage: 'images/reveal-parallax-6.jpg',
-				// parallaxBackgroundSize: '2200px 1173px',
+                // parallaxBackgroundSize: '2200px 1173px',
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
 
-		</script>
-	</body>
+        </script>
+    </body>
 </html>
